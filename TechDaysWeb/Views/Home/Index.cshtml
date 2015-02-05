@@ -1,0 +1,20 @@
+﻿@model TechDaysWeb.Models.MainPageModel
+
+<h1>Readings taken @Model.ObtainedTime</h1>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Device ID</th>
+        <th>Time Taken</th>
+        <th>Sensor Value</th>
+    </tr>
+@foreach (var reading in Model.Readings)
+{
+    <tr>
+        <td>@reading.Id</td>
+        <td>@reading.Time</td>
+        <td>@reading.Value</td>
+    </tr>
+}
+</table>
