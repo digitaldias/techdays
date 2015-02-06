@@ -10,6 +10,7 @@ namespace techdays.business
         private const int UPPER_VALVE_ID = 0;
         private const int LOWER_VALVE_ID = 1;
         private static TimeSpan TWENTY_SECONDS = TimeSpan.FromSeconds(20);
+        private static TimeSpan VALVE_OPERATION_TIME = TimeSpan.FromSeconds(3);
 
         private readonly IExceptionHandler _exceptionHandler;
         private readonly IStringToGuidConverter _stringToGuidConverter;
@@ -66,11 +67,22 @@ namespace techdays.business
         {
             const string METHOD = "WaterManager.OpenAndCloseValve(int, TimeSpan)";
 
+            var totalValveOperationTime = VALVE_OPERATION_TIME + VALVE_OPERATION_TIME;
+            if (duration < totalValveOperationTime)
+                throw new InvalidProgramException("Cannot set a duration shorter than twice the valve operation time");
+
+            // Subtract the valve operation time from the total duration
+            var waitTimeMinusValeOperationTime = duration - totalValveOperationTime;
+
             _exceptionHandler.RunAction(METHOD, () =>
             {
                 _valveController.Open(valveId);
-                Thread.Sleep(duration);
+                Thread.Sleep(VALVE_OPERATION_TIME);
+
+                Thread.Sleep(waitTimeMinusValeOperationTime);
+
                 _valveController.Close(valveId);
+                Thread.Sleep(VALVE_OPERATION_TIME);
             });
         }
     }

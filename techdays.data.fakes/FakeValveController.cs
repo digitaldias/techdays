@@ -13,6 +13,7 @@ namespace techdays.data.fakes
         private static string SIGNAL_CLOSE = "close";
 
         private IEnumerable<ValveGroup> _valveGroups { get; set; }
+
         private ValveGroup _selectedValveGroup { get; set; }
 
         public FakeValveController()
