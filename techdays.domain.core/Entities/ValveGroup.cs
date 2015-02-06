@@ -6,7 +6,7 @@ namespace techdays.domain.core.Entities
 {
     public class ValveGroup
     {
-        public List<Valve> _valves { get; set; };
+        public List<Valve> _valves { get; set; }
 
         public Guid PlantId { get; set; }
 
@@ -23,7 +23,7 @@ namespace techdays.domain.core.Entities
                 throw new InvalidProgramException("Cannot create valve group without a single valve!");
 
             // Assign first plantId
-            plantId = valves.First().plantId;
+            var plantId = valves.First().plantId;
 
             foreach (var valve in valves)
             {
