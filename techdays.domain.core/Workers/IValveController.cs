@@ -1,4 +1,6 @@
-﻿namespace techdays.domain.core.Workers
+﻿using System;
+
+namespace techdays.domain.core.Workers
 {
     public interface IValveController
     {
@@ -6,6 +8,6 @@
 
         void Close(int valveId);
 
-        void OperateOnTarget(string plantId);
+        void OperateOnTarget(Guid plantId);
     }
 }

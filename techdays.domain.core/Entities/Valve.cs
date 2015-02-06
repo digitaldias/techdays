@@ -4,10 +4,10 @@ namespace techdays.domain.core.Entities
 {
     public class Valve
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
+
+        public Guid plantId { get; set; }
 
         public string Name { get; set; }
-
-        public int Sequence { get; set; }
     }
 }
