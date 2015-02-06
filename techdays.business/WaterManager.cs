@@ -63,6 +63,16 @@ namespace techdays.business
             }
         }
 
+        /// <summary>
+        /// While a valve is opening, there is a valve operation time, and likewise, there is an operation time for it to close. 
+        /// The duration that is requested in this method spans the duration of the operation minus  valve operation times. 
+        /// If you request a 20s duration, and the valve operation time is 3s, the duration will be adjusted to 14s 
+        /// so that the entire operation completes in 20s.  Adjust your duration according to how long your water takes to fill the hose.
+        /// 
+        /// The thread will sleep for the designated duration. 
+        /// </summary>
+        /// <param name="valveId">Id of the valve to open and close</param>
+        /// <param name="duration">The desired duration of the operation.</param>
         private void OpenAndCloseValve(int valveId, TimeSpan duration)
         {
             const string METHOD = "WaterManager.OpenAndCloseValve(int, TimeSpan)";
@@ -77,7 +87,7 @@ namespace techdays.business
             _exceptionHandler.RunAction(METHOD, () =>
             {
                 _valveController.Open(valveId);
-                Thread.Sleep(VALVE_OPERATION_TIME);
+                Thread.Sleep(VALVE_OPERATION_TIME); 
 
                 Thread.Sleep(waitTimeMinusValeOperationTime);
 
