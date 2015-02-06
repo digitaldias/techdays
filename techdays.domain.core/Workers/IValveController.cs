@@ -1,4 +1,5 @@
 ﻿using System;
+using techdays.domain.core.Entities;
 
 namespace techdays.domain.core.Workers
 {
@@ -8,6 +9,6 @@ namespace techdays.domain.core.Workers
 
         void Close(int valveId);
 
-        void OperateOnTarget(Guid plantId);
+        void SetActivePlant(Guid plantId);
     }
 }

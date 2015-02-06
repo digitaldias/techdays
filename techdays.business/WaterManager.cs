@@ -52,7 +52,7 @@ namespace techdays.business
                 return;
 
             // Tell the valvecontroller which target system (plant) to operate on
-            _valveController.OperateOnTarget(plantGuid);
+            _valveController.SetActivePlant(plantGuid);
 
             // Rince, repeat - literally :)
             for (int i = 0; i < numberOfFillings; i++)
