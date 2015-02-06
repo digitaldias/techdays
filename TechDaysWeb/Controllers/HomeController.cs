@@ -15,7 +15,8 @@ namespace TechDaysWeb.Controllers
         {
             _sensorReadingManager = sensorReadingManager;
         }
-        // GET: /<controller>/
+
+        /// <returns>The 10 last sensor readings</returns>
         public IActionResult Index()
         {
             var model = new MainPageModel
