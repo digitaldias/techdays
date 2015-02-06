@@ -6,7 +6,7 @@ namespace techdays.domain.core.Workers
 {
     public interface IExceptionHandler
     {
-        void RunAction(string callingMethodName, Func<SensorReading> unsafeAction);
+        void RunAction(string callingMethodName, Action unsafeAction);
 
         T GetFromUnsafeMethod<T>(string callingMethodName, Func<T> unsafeFunction);
     }

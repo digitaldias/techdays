@@ -28,7 +28,7 @@ namespace techdays.business
         }
 
 
-        public void RunAction(string callingMethodName, Func<SensorReading> unsafeAction)
+        public void RunAction(string callingMethodName, Action unsafeAction)
         {
             try
             {
