@@ -7,8 +7,8 @@ namespace techdays.business
 {
     public class WaterManager : IWaterManager
     {
-        private const int UPPER_VALVE_ID = 1;
-        private const int LOWER_VALVE_ID = 2;
+        private const int UPPER_VALVE_ID = 0;
+        private const int LOWER_VALVE_ID = 1;
         private static TimeSpan TWENTY_SECONDS = TimeSpan.FromSeconds(20);
 
         private readonly IExceptionHandler _exceptionHandler;
